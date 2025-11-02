@@ -1,8 +1,6 @@
-import Link from "next/link";
 import React from "react";
-import Image from "next/image";
 
-export default function ServicesPage() {
+export default function ServiceDetailPage({ params }) {
   const data = [
     {
       _id: 2,
@@ -40,19 +38,13 @@ export default function ServicesPage() {
         "Secure and scalable cloud architecture to power your digital transformation.",
     },
   ];
-
+  const id = params.id;
+  const singleData = data.find((d) => d._id == id);
   return (
     <div>
-      <p className="font-bold text-3xl">ServicesPage</p>
-      {data.map((d) => {
-        return (
-          <div className="space-y-5 py-10" key={d._id}>
-            <Link href={`/services/${d._id}`}>
-              <img src={d.ser_image} alt={d.name} width={400} height={300} />
-            </Link>
-          </div>
-        );
-      })}
+      <h1>ServiceDetailPage</h1>
+      <p>ID : {id}</p>
+      <p>{singleData.name}</p>
     </div>
   );
 }
